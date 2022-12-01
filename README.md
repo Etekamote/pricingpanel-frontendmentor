@@ -29,5 +29,5 @@ Users should be able to:
 
 ## Author
 kacpermaciejewski1998@gmail.com
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/Etekamote)
+- Frontend Mentor - [@Etekamote](https://www.frontendmentor.io/profile/Etekamote)
 
