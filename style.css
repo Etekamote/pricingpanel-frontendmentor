@@ -1,0 +1,258 @@
+:root{
+    --primary-color-gradient: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+    --secondary-color-gradient: linear-gradient(to right bottom, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+    --very-light-color: hsl(240, 78%, 98%);
+    --light-color: hsl(234, 14%, 74%);
+    --grey-color: rgb(109, 112, 141);
+    --dark-color: rgb(73, 76, 95);
+    --violet-color: hsl(237, 63%, 64%);
+}
+
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    color: var(--dark-color);
+    background-color: var(--very-light-color);  
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.background-top{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -999;
+}
+.background-bottom{
+    position: absolute;
+    bottom: 0;
+    z-index: -999;
+}
+
+.title{
+    text-align: center;
+    font-weight: 700;
+    color: var(--grey-color);
+    margin-top: 5rem;
+    font-size: 3rem;
+}
+.switch{
+    display: flex;
+    justify-content: center;
+    margin: 3.5rem 0 8rem 0;
+    color: var(--light-color);
+    font-size: 1.4rem;
+    height: 2.6rem;;
+    align-items: center;
+}
+
+.switch__label{
+    width: 4.5rem;
+    height: 2.6rem;
+    position: relative;
+    margin: 0 2rem;
+
+}
+
+.switch__label input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch__button{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: var(--primary-color-gradient);
+    border-radius: 10rem;
+    transition: all .3s;
+}
+
+.switch__button::before{
+    position: absolute;
+    content: "";
+    width: 2rem;
+    top: 3px;
+    bottom: 3px;
+    left: 4px;
+    background-color: var(--very-light-color);
+    border-radius: 50%;
+    transition: all .3s;
+}
+
+.switch__label input:checked + .switch__button::before{
+    transform: translateX(17px);
+}
+
+.switch__button:active{
+    background-image: linear-gradient(hsl(236, 72%, 79%),hsl(236, 72%, 79%));
+    cursor: pointer;
+}
+.panels{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.switch:has(input:checked) ~ .panels>.panel>.panel__list>.panel__item>.monthly-price{
+    display: inline-block;
+}
+.switch:has(input:checked) ~ .panels>.panel>.panel__list>.panel__item>.annually-price{
+    display: none;
+}
+
+
+
+.panel{
+background-color: #fff;
+box-shadow: 0rem 2rem 2rem rgba(73,76,95,8%);
+width: 33%;
+border-radius: 1rem;
+padding: 3.5rem;
+color: var(--grey-color);
+}
+
+.panel--primary{
+    background-image: var(--secondary-color-gradient);
+    color: #fff;
+    position: absolute;
+    width: 36%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -2.5rem;
+    bottom: -2.5rem;
+    padding: 6rem 3.5rem;
+}
+
+.panel__title{
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.panel__list{
+    list-style: none;
+    margin-bottom: 3rem;
+}
+
+.panel__item{
+    border-bottom: 1px solid var(--light-color);
+    margin-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.monthly-price{
+    display: none;
+}
+.annually-price{
+    display: inline-block;
+}
+.dolar-sign{
+    font-size: 3.5rem;
+}
+
+.panel__item--price{
+    font-size: 6rem;
+    color: var(--dark-color);
+    margin-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+.panel__item--price-secondary{
+    color: #fff;
+}
+
+.button:link,
+.button:visited
+{
+text-decoration: none;
+text-transform: uppercase;
+
+}
+
+.button{
+    display: block;
+    background-image: var(--primary-color-gradient);
+    text-align: center;
+    padding: 1.5rem 0;
+    border-radius: .5rem;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+    color: var(--very-light-color);
+    border: 1px solid #fff;
+
+}
+
+.button:hover{
+    background-image: linear-gradient(#fff,#fff);
+    color: var(--violet-color);
+    border: 1px solid var(--dark-color);
+}
+
+.button--secondary{
+    background-image: linear-gradient(#fff,#fff);
+    color: var(--violet-color);
+}
+
+.button--secondary:hover{
+    background-image: linear-gradient(transparent,transparent);
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+
+@media (max-width: 900px) {
+    .wrapper{
+        overflow-x: hidden;
+        position: relative;
+    }
+    
+    .background-bottom{
+        display: none;
+    }
+    .background-top{
+        right: -50%;
+        top: -2.5%;
+    }
+
+
+    .panels{
+        flex-direction: column;
+        width: 90%;
+    }
+    .panel{
+        width: 100%;
+    }
+
+    .panel:not(:first-of-type){
+        margin-top: 3rem;
+    }
+    .panel--primary{
+        position: relative;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+    }
+    
+}
